@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -44,6 +45,7 @@ type CartItem = {
 };
 
 export default function Index() {
+  const navigate = useNavigate();
   const [isDark, setIsDark] = useState(false);
   const [cart, setCart] = useState<CartItem[]>([]);
 
@@ -116,6 +118,16 @@ export default function Index() {
             </div>
             
             <div className="flex items-center gap-2">
+              <Button 
+                variant="ghost" 
+                size="icon"
+                onClick={() => navigate('/admin')}
+                className="rounded-full"
+                title="Панель администратора"
+              >
+                <Icon name="Settings" size={20} />
+              </Button>
+              
               <Button 
                 variant="ghost" 
                 size="icon"
